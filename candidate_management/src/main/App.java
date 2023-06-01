@@ -10,10 +10,11 @@ import utils.*;
 public class App {
     public static void main(String[] args) {
         CandidateList candidateList = new CandidateList();
-        menu(candidateList);
+        App app = new App();
+        app.menu(candidateList);
     }
 
-    public static void menu(CandidateList candidateList) {
+    public void menu(CandidateList candidateList) {
         candidateList.addAll(Arrays.asList(
                 new Experience("01", "Duc", "LDC", 2003, "Bac Giang", "012347823561", "ducldche176120@fpt.edu.vn", 0, 2,
                         "Java"),
@@ -53,7 +54,7 @@ public class App {
 
     }
 
-    public static void addCandidate(CandidateList candidateList, int choice) {
+    public void addCandidate(CandidateList candidateList, int choice) {
         System.out.println("============ ADD CANDIDATE ============");
         String id;
         while (true) {
@@ -97,7 +98,7 @@ public class App {
         System.out.println("Add candidate successfully!");
     }
 
-    public static void addExperience(CandidateList candidateList, Candidate candidate) {
+    public void addExperience(CandidateList candidateList, Candidate candidate) {
         int yearExp = Validate.inputExp("Enter year of experience: ", candidate.getBirthDate());
         String proSkill = Validate.inputString("Enter professional skill: ");
         candidateList.add(new Experience(candidate.getId(), candidate.getFirstName(), candidate.getLastName(),
@@ -105,7 +106,7 @@ public class App {
                 candidate.getCandidateType(), yearExp, proSkill));
     }
 
-    public static void addFresher(CandidateList candidateList, Candidate candidate) {
+    public void addFresher(CandidateList candidateList, Candidate candidate) {
         String graduationDate = Validate.inputGraduationDate("Enter graduation year: ", candidate.getBirthDate());
         String graduationRank = Validate.inputGraduationRank();
         String education = Validate.inputString("Enter education: ");
@@ -114,7 +115,7 @@ public class App {
                 candidate.getCandidateType(), graduationDate, graduationRank, education));
     }
 
-    public static void addInternship(CandidateList candidateList, Candidate candidate) {
+    public void addInternship(CandidateList candidateList, Candidate candidate) {
         String major = Validate.inputString("Enter major: ");
         String semester = Validate.inputString("Enter semester: ");
         String universityName = Validate.inputString("Enter university name: ");
@@ -123,7 +124,7 @@ public class App {
                 candidate.getCandidateType(), major, semester, universityName));
     }
 
-    public static void displayAndSearch(CandidateList candidateList) {
+    public void displayAndSearch(CandidateList candidateList) {
         System.out.println("============== LIST CANDIDATE ==============");
         printCandidate(candidateList);
         String name = Validate.inputString("Enter name to search (First name or Last name): ");
@@ -141,7 +142,7 @@ public class App {
         }
     }
 
-    public static void printCandidate(ArrayList<Candidate> candidateList) {
+    public void printCandidate(ArrayList<Candidate> candidateList) {
         System.out.println();
         AtomicInteger count = new AtomicInteger(0);
         System.out.println("EXPERIENCE:");
