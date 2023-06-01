@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class Validate {
-    private static final String EMAIL_VALID = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+    private static final String EMAIL_VALID = "\"^[a-z][a-z0-9_\\\\.]{5,32}@[a-z0-9]{2,}(\\\\.[a-z0-9]{2,4}){1,2}\"";
     private static final String PHONE_VALID = "\\b\\d{10,}\\b";
     private static final String YEAR_VALID = "\\b(19|20)\\d{2}\\b";
     private static final Scanner sc = new Scanner(System.in);
@@ -27,9 +27,11 @@ public class Validate {
             }
         }
     }
-    public static String inputString(){
+
+    public static String inputString() {
         return inputString(null);
     }
+
     public static String printChoices(String msg, String[] validValues) {
         return inputString(msg, validValues, false);
     }

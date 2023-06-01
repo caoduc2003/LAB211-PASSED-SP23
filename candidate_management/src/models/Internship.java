@@ -42,6 +42,6 @@ public class Internship extends Candidate {
 
     @Override
     public String toString(){
-        return super.toString();
+        return String.format("%s|%s|%s|%s", super.toString(), major, semester, university);
     }
 }

@@ -37,6 +37,6 @@ public class Experience extends Candidate {
     @Override
     // toString using polymorphism
     public String toString() {
-        return super.toString();
+        return String.format("%s|%d|%s", super.toString(), yearExperience, proSkill);
     }
 }
