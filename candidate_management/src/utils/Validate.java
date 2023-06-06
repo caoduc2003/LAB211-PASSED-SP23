@@ -5,10 +5,16 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class Validate {
-    private static final String EMAIL_VALID = "\"^[a-z][a-z0-9_\\\\.]{5,32}@[a-z0-9]{2,}(\\\\.[a-z0-9]{2,4}){1,2}\"";
     private static final String PHONE_VALID = "\\b\\d{10,}\\b";
     private static final String YEAR_VALID = "\\b(19|20)\\d{2}\\b";
     private static final Scanner sc = new Scanner(System.in);
+
+    public static boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
 
     public static String inputString(String msg) {
         if (msg != null) {
@@ -124,7 +130,10 @@ public class Validate {
         while (true) {
             try {
                 String email = inputString(null);
-                if (!email.matches(EMAIL_VALID)) {
+                // if (!email.matches(EMAIL_VALID)) {
+                // throw new Exception("Invalid email");
+                // }
+                if (!isValidEmailAddress(email)) {
                     throw new Exception("Invalid email");
                 }
                 return email;
